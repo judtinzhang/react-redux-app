@@ -9,20 +9,21 @@ const Intro = ({ intro, dispatchEditIntro }) => {
     const [madeEdit, setMadeEdit] = useState(false)
 
     return (
-        <>
-            <button onClick={() => setEditMode(true)}>Edit</button>
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <button class="btn btn-primary" onClick={() => setEditMode(true)}>Edit</button>
             {editMode && (
                 <div>
                     <input placeholder={intro.image} onChange={e => setImage(e.target.value)}/>
                     <input placeholder={intro.desc} onChange={e => setDesc(e.target.value)}/>
-                    <button onClick={() => {
+                    <button class="btn btn-primary" onClick={() => {
                         if (image && desc) {
                             setEditMode(false)
                             setMadeEdit(true)
                             dispatchEditIntro({image, desc})
                         }
                     }}>Save</button>
-                    <button onClick={() => setEditMode(false)}>Cancel</button>
+                    <button class="btn btn-primary" onClick={() => setEditMode(false)}>Cancel</button>
                 </div>
             )}
             {!editMode && madeEdit && (
@@ -32,7 +33,8 @@ const Intro = ({ intro, dispatchEditIntro }) => {
                     {intro.desc}
                 </div>
             )}
-        </>
+            </div>
+        </div>
     )
 }
 

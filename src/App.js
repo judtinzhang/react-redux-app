@@ -7,7 +7,6 @@ const App = () => (
     <>
         <Intro/>
         <br/>
-        <br/>
         <Post/>
     </>
 )

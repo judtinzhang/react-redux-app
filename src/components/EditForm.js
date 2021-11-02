@@ -15,10 +15,14 @@ const EditForm = ({post, dispatchEditPost}) => {
                 <div>
                     <div>
                         Title: {title} 
-                        Image: <img src={image}/>
+                        <br/>
+                        Image:
+                        <br/>
+                         <img src={image}/>
+                        <br/>
                         Description: {desc} 
                     </div>
-                    <button onClick={() => setIsEdit(true)}>Edit</button>
+                    <button class="btn btn-primary" onClick={() => setIsEdit(true)}>Edit</button>
                 </div>
             )}
             {isEdit && (
@@ -31,12 +35,12 @@ const EditForm = ({post, dispatchEditPost}) => {
                     <br/>
                     Description
                     <input placeholder={desc} onChange={e => setNewDesc(e.target.value)}/>
-                    <button onClick={() => {
+                    <button class="btn btn-primary" onClick={() => {
                         dispatchEditPost({type: MODIFY_POST, n_id: id, title: newTitle !== '' ? newTitle : title, image: newImage !== '' ? newImage : image, desc: newDesc !== '' ? newDesc : desc})
                         setIsEdit(false)
                     }}>Save</button>
-                    <button onClick={() => setIsEdit(false)}>Cancel</button>
-                    <button onClick={() => { 
+                    <button class="btn btn-primary" onClick={() => setIsEdit(false)}>Cancel</button>
+                    <button class="btn btn-primary" onClick={() => { 
                         dispatchEditPost({type: DELETE_POST, n_id: id, title, image, desc})
                         setIsEdit(false)
                     }}>Delete Post</button>

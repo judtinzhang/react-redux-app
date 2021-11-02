@@ -11,7 +11,7 @@ const Post = ({ posts, dispatchEditPost }) => {
     
     return (
         <>
-            <button onClick={() => {
+            <button class="btn btn-primary" onClick={() => {
                 setCreateMode(true)
             }}>Add Post</button>
             {posts.map(post => 
@@ -23,13 +23,13 @@ const Post = ({ posts, dispatchEditPost }) => {
                     <input placeholder="Title" onChange={e => setTitle(e.target.value)}/>
                     <input placeholder="Image" onChange={e => setImage(e.target.value)}/>
                     <input placeholder="Description" onChange={e => setDesc(e.target.value)}/>
-                    <button onClick={() => {
+                    <button class="btn btn-primary" onClick={() => {
                         if (title && image && desc) {
                             setCreateMode(false)
                             dispatchEditPost({ title, image, desc })
                         }
                     }}>Save</button>
-                    <button onClick={() => setCreateMode(false)}>Cancel</button>
+                    <button class="btn btn-primary" onClick={() => setCreateMode(false)}>Cancel</button>
                 </div>
             )}
         </>

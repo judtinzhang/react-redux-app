@@ -2,33 +2,35 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { editIntro } from '../actions'
 
-const Intro = ({ state, dispatchEditIntro }) => {
+const Intro = ({ intro, dispatchEditIntro }) => {
     const [image, setImage] = useState('')
     const [desc, setDesc] = useState('')
-    const [showForm, setShowForm] = useState(false)
+    const [editMode, setEditMode] = useState(false)
+    const [madeEdit, setMadeEdit] = useState(false)
 
     return (
         <>
-            <button onClick={() => setShowForm(true)}>Edit</button>
-            {showForm && (
+            <button onClick={() => setEditMode(true)}>Edit</button>
+            {editMode && (
                 <div>
-                    <input placeholder={state.image} onChange={e => setImage(e.target.value)}/>
-                    <input placeholder={state.desc} onChange={e => setDesc(e.target.value)}/>
+                    <input placeholder={intro.image} onChange={e => setImage(e.target.value)}/>
+                    <input placeholder={intro.desc} onChange={e => setDesc(e.target.value)}/>
                     <button onClick={() => {
                         if (image && desc) {
-                            setShowForm(false)
+                            setEditMode(false)
+                            setMadeEdit(true)
                             dispatchEditIntro({image, desc})
                         }
                     }}>Save</button>
-                    <button onClick={() => setShowForm(false)}>Cancel</button>
+                    <button onClick={() => setEditMode(false)}>Cancel</button>
                 </div>
             )}
             
-            {!showForm && image && desc && (
+            {!editMode && madeEdit && (
                 <div>
-                    <img src={state.image}/>
+                    <img src={intro.image}/>
                     <br/>
-                    {state.desc}
+                    {intro.desc}
                 </div>
             )}
         </>
@@ -40,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-    state: state.intro
+    intro: state.intro
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Intro)

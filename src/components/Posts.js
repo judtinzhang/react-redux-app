@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { editPost } from '../actions'
+import EditForm from './EditForm'
 
 const Post = ({ posts, dispatchEditPost }) => {
     const [title, setTitle] = useState('')
@@ -13,7 +14,10 @@ const Post = ({ posts, dispatchEditPost }) => {
             <button onClick={() => {
                 setCreateMode(true)
             }}>Add Post</button>
-            {posts.map(post => <div key={post.id}>|{post.title}, {post.image}, {post.desc}|</div>)}
+            {posts.map(post => 
+                <div key={post.id}>
+                    <EditForm post={post}/>
+                </div>)}
             {createMode && (
                 <div>
                     <input placeholder="Title" onChange={e => setTitle(e.target.value)}/>

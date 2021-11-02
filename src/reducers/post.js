@@ -4,6 +4,7 @@ const defaultState = []
 
 const PostReducer = (state=defaultState, action) => {
     const {type, id, title, image, desc} = action
+    console.log(type)
 
     switch (type){
         case ADD_POST:
@@ -15,11 +16,7 @@ const PostReducer = (state=defaultState, action) => {
                 }
             })
         case DELETE_POST:
-            return state.map(post => {
-                if (post.id === id) {
-                    return {}
-                }
-            })
+            return state.filter(post => post.id !== id)
         default:
             return state
     }

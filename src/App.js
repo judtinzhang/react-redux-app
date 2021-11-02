@@ -1,6 +1,10 @@
 import React from 'react'
- 
+
+import Intro from './components/Intro'
+
 const App = () => (
-  <h1>Your react app!</h1>
+    <>
+        <Intro/>
+    </>
 )
 export default App

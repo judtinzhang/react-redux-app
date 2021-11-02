@@ -4,7 +4,6 @@ const defaultState = []
 
 const PostReducer = (state=defaultState, action) => {
     const {type, id, title, image, desc} = action
-    console.log(type)
 
     switch (type){
         case ADD_POST:

@@ -25,7 +25,6 @@ const Intro = ({ intro, dispatchEditIntro }) => {
                     <button onClick={() => setEditMode(false)}>Cancel</button>
                 </div>
             )}
-            
             {!editMode && madeEdit && (
                 <div>
                     <img src={intro.image}/>

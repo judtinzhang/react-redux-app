@@ -29,7 +29,6 @@ const Post = ({ posts, dispatchEditPost }) => {
                             dispatchEditPost({ title, image, desc })
                         }
                     }}>Save</button>
-
                     <button onClick={() => setCreateMode(false)}>Cancel</button>
                 </div>
             )}

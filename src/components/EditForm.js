@@ -6,7 +6,6 @@ const EditForm = ({post, dispatchEditPost}) => {
     const [newTitle, setNewTitle] = useState('')
     const [newImage, setNewImage] = useState('')
     const [newDesc, setNewDesc] = useState('')
-    
     const [isEdit, setIsEdit] = useState(false)
     const {id, title, image, desc} = post
 
@@ -21,7 +20,6 @@ const EditForm = ({post, dispatchEditPost}) => {
                     </div>
                     <button onClick={() => setIsEdit(true)}>Edit</button>
                 </div>
-
             )}
             {isEdit && (
                 <div>
@@ -34,10 +32,7 @@ const EditForm = ({post, dispatchEditPost}) => {
                     Description
                     <input placeholder={desc} onChange={e => setNewDesc(e.target.value)}/>
                     <button onClick={() => {
-                        const n_title = newTitle !== '' ? newTitle : title
-                        const n_image = newImage !== '' ? newImage : image
-                        const n_desc = newDesc !== '' ? newDesc : desc
-                        dispatchEditPost({type: MODIFY_POST, n_id: id, title: n_title, image: n_image, desc: n_desc})
+                        dispatchEditPost({type: MODIFY_POST, n_id: id, title: newTitle !== '' ? newTitle : title, image: newImage !== '' ? newImage : image, desc: newDesc !== '' ? newDesc : desc})
                         setIsEdit(false)
                     }}>Save</button>
                     <button onClick={() => setIsEdit(false)}>Cancel</button>
